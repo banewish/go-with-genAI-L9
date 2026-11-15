@@ -16,13 +16,13 @@ import (
 )
 
 type MockUserRepository struct {
-	users map[uint]*model.User
+	users  map[uint]*model.User
 	nextID uint
 }
 
 func NewMockUserRepository() *MockUserRepository {
 	return &MockUserRepository{
-		users: make(map[uint]*model.User),
+		users:  make(map[uint]*model.User),
 		nextID: 1,
 	}
 }
@@ -111,7 +111,7 @@ func TestAuthHandler_Register_Success(t *testing.T) {
 func TestAuthHandler_Register_DuplicateEmail(t *testing.T) {
 	repo := NewMockUserRepository()
 	handler := NewAuthHandler(repo)
-	
+
 	hash, _ := bcrypt.GenerateFromPassword([]byte("password123"), bcrypt.DefaultCost)
 	repo.Create(&model.User{
 		Email:        "user@example.com",
@@ -276,4 +276,3 @@ func createTestToken(userID uint, role string, expiration time.Time) string {
 	tokenString, _ := token.SignedString([]byte("default-secret-key"))
 	return tokenString
 }
-
