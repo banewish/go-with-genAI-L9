@@ -1,0 +1,255 @@
+=== RUN   TestStage1_Health
+--- PASS: TestStage1_Health (0.01s)
+=== RUN   TestStage1_UnknownRouteReturns404
+--- PASS: TestStage1_UnknownRouteReturns404 (0.00s)
+=== RUN   TestStage1_CreateReturns201AndStoredObject
+--- PASS: TestStage1_CreateReturns201AndStoredObject (0.00s)
+=== RUN   TestStage1_OptionalFieldsAreAcceptedAndEchoed
+--- PASS: TestStage1_OptionalFieldsAreAcceptedAndEchoed (0.00s)
+=== RUN   TestStage1_OptionalFieldsAreNullWhenOmitted
+--- PASS: TestStage1_OptionalFieldsAreNullWhenOmitted (0.00s)
+=== RUN   TestStage1_GetByIDReturnsCreatedResource
+--- PASS: TestStage1_GetByIDReturnsCreatedResource (0.00s)
+=== RUN   TestStage1_RoutersAreIsolated
+--- PASS: TestStage1_RoutersAreIsolated (0.00s)
+=== RUN   TestStage2_MissingRequiredFieldReturns422
+=== RUN   TestStage2_MissingRequiredFieldReturns422/title
+=== RUN   TestStage2_MissingRequiredFieldReturns422/isbn
+=== RUN   TestStage2_MissingRequiredFieldReturns422/author
+=== RUN   TestStage2_MissingRequiredFieldReturns422/category
+--- PASS: TestStage2_MissingRequiredFieldReturns422 (0.00s)
+    --- PASS: TestStage2_MissingRequiredFieldReturns422/title (0.00s)
+    --- PASS: TestStage2_MissingRequiredFieldReturns422/isbn (0.00s)
+    --- PASS: TestStage2_MissingRequiredFieldReturns422/author (0.00s)
+    --- PASS: TestStage2_MissingRequiredFieldReturns422/category (0.00s)
+=== RUN   TestStage2_EmptyRequiredFieldReturns422
+=== RUN   TestStage2_EmptyRequiredFieldReturns422/title
+=== RUN   TestStage2_EmptyRequiredFieldReturns422/isbn
+=== RUN   TestStage2_EmptyRequiredFieldReturns422/author
+=== RUN   TestStage2_EmptyRequiredFieldReturns422/category
+--- PASS: TestStage2_EmptyRequiredFieldReturns422 (0.00s)
+    --- PASS: TestStage2_EmptyRequiredFieldReturns422/title (0.00s)
+    --- PASS: TestStage2_EmptyRequiredFieldReturns422/isbn (0.00s)
+    --- PASS: TestStage2_EmptyRequiredFieldReturns422/author (0.00s)
+    --- PASS: TestStage2_EmptyRequiredFieldReturns422/category (0.00s)
+=== RUN   TestStage2_MalformedJSONReturns422
+=== RUN   TestStage2_MalformedJSONReturns422/broken_json
+=== RUN   TestStage2_MalformedJSONReturns422/empty_body
+=== RUN   TestStage2_MalformedJSONReturns422/json_array
+--- PASS: TestStage2_MalformedJSONReturns422 (0.00s)
+    --- PASS: TestStage2_MalformedJSONReturns422/broken_json (0.00s)
+    --- PASS: TestStage2_MalformedJSONReturns422/empty_body (0.00s)
+    --- PASS: TestStage2_MalformedJSONReturns422/json_array (0.00s)
+=== RUN   TestStage2_InvalidIDReturns400
+=== RUN   TestStage2_InvalidIDReturns400/GET/abc
+=== RUN   TestStage2_InvalidIDReturns400/PUT/abc
+=== RUN   TestStage2_InvalidIDReturns400/DELETE/abc
+=== RUN   TestStage2_InvalidIDReturns400/GET/-1
+=== RUN   TestStage2_InvalidIDReturns400/PUT/-1
+=== RUN   TestStage2_InvalidIDReturns400/DELETE/-1
+=== RUN   TestStage2_InvalidIDReturns400/GET/1.5
+=== RUN   TestStage2_InvalidIDReturns400/PUT/1.5
+=== RUN   TestStage2_InvalidIDReturns400/DELETE/1.5
+--- PASS: TestStage2_InvalidIDReturns400 (0.00s)
+    --- PASS: TestStage2_InvalidIDReturns400/GET/abc (0.00s)
+    --- PASS: TestStage2_InvalidIDReturns400/PUT/abc (0.00s)
+    --- PASS: TestStage2_InvalidIDReturns400/DELETE/abc (0.00s)
+    --- PASS: TestStage2_InvalidIDReturns400/GET/-1 (0.00s)
+    --- PASS: TestStage2_InvalidIDReturns400/PUT/-1 (0.00s)
+    --- PASS: TestStage2_InvalidIDReturns400/DELETE/-1 (0.00s)
+    --- PASS: TestStage2_InvalidIDReturns400/GET/1.5 (0.00s)
+    --- PASS: TestStage2_InvalidIDReturns400/PUT/1.5 (0.00s)
+    --- PASS: TestStage2_InvalidIDReturns400/DELETE/1.5 (0.00s)
+=== RUN   TestStage2_NotFoundReturns404
+=== RUN   TestStage2_NotFoundReturns404/GET
+=== RUN   TestStage2_NotFoundReturns404/PUT
+=== RUN   TestStage2_NotFoundReturns404/DELETE
+--- PASS: TestStage2_NotFoundReturns404 (0.00s)
+    --- PASS: TestStage2_NotFoundReturns404/GET (0.00s)
+    --- PASS: TestStage2_NotFoundReturns404/PUT (0.00s)
+    --- PASS: TestStage2_NotFoundReturns404/DELETE (0.00s)
+=== RUN   TestStage2_PutChecksIDThenBodyThenExistence
+--- PASS: TestStage2_PutChecksIDThenBodyThenExistence (0.00s)
+=== RUN   TestStage2_ErrorResponsesAreJSON
+--- PASS: TestStage2_ErrorResponsesAreJSON (0.00s)
+=== RUN   TestStage3_UpdateReplacesFieldsAndKeepsID
+--- PASS: TestStage3_UpdateReplacesFieldsAndKeepsID (0.00s)
+=== RUN   TestStage3_UpdateWithoutOptionalFieldsClearsThem
+--- PASS: TestStage3_UpdateWithoutOptionalFieldsClearsThem (0.00s)
+=== RUN   TestStage3_DeleteReturns204AndRemovesResource
+--- PASS: TestStage3_DeleteReturns204AndRemovesResource (0.00s)
+=== RUN   TestStage3_IDsStartAtOneAndAreNotReused
+--- PASS: TestStage3_IDsStartAtOneAndAreNotReused (0.00s)
+=== RUN   TestStage3_TimestampsAreSetOnCreate
+--- PASS: TestStage3_TimestampsAreSetOnCreate (0.00s)
+=== RUN   TestStage4_EmptyListIsJSONArray
+--- PASS: TestStage4_EmptyListIsJSONArray (0.00s)
+=== RUN   TestStage4_ListIsSortedByID
+--- PASS: TestStage4_ListIsSortedByID (0.00s)
+=== RUN   TestStage4_DefaultLimitIs10
+--- PASS: TestStage4_DefaultLimitIs10 (0.00s)
+=== RUN   TestStage4_Pagination
+--- PASS: TestStage4_Pagination (0.00s)
+=== RUN   TestStage4_PagesCoverAllResourcesExactlyOnce
+--- PASS: TestStage4_PagesCoverAllResourcesExactlyOnce (0.00s)
+=== RUN   TestStage4_FilterByFilterField
+--- PASS: TestStage4_FilterByFilterField (0.00s)
+=== RUN   TestStage4_InvalidPaginationReturns400
+=== RUN   TestStage4_InvalidPaginationReturns400/?page=abc
+=== RUN   TestStage4_InvalidPaginationReturns400/?page=0
+=== RUN   TestStage4_InvalidPaginationReturns400/?page=-1
+=== RUN   TestStage4_InvalidPaginationReturns400/?limit=abc
+=== RUN   TestStage4_InvalidPaginationReturns400/?limit=0
+=== RUN   TestStage4_InvalidPaginationReturns400/?limit=-5
+--- PASS: TestStage4_InvalidPaginationReturns400 (0.00s)
+    --- PASS: TestStage4_InvalidPaginationReturns400/?page=abc (0.00s)
+    --- PASS: TestStage4_InvalidPaginationReturns400/?page=0 (0.00s)
+    --- PASS: TestStage4_InvalidPaginationReturns400/?page=-1 (0.00s)
+    --- PASS: TestStage4_InvalidPaginationReturns400/?limit=abc (0.00s)
+    --- PASS: TestStage4_InvalidPaginationReturns400/?limit=0 (0.00s)
+    --- PASS: TestStage4_InvalidPaginationReturns400/?limit=-5 (0.00s)
+=== RUN   TestStage5_CORSPreflightReturns204
+--- PASS: TestStage5_CORSPreflightReturns204 (0.00s)
+=== RUN   TestStage5_CORSHeaderOnRegularResponses
+--- PASS: TestStage5_CORSHeaderOnRegularResponses (0.00s)
+=== RUN   TestStage5_ConcurrentCreatesGetUniqueIDs
+--- PASS: TestStage5_ConcurrentCreatesGetUniqueIDs (0.00s)
+=== RUN   TestStage5_ConcurrentReadsAndWritesAreRaceFree
+--- PASS: TestStage5_ConcurrentReadsAndWritesAreRaceFree (0.00s)
+PASS
+ok  	homework/internal/app	(cached)
+=== RUN   TestAuthHandler_Register_Success
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/v1/auth/register     --> homework/internal/handler.(*AuthHandler).Register-fm (1 handlers)
+--- PASS: TestAuthHandler_Register_Success (0.04s)
+=== RUN   TestAuthHandler_Register_DuplicateEmail
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/v1/auth/register     --> homework/internal/handler.(*AuthHandler).Register-fm (1 handlers)
+--- PASS: TestAuthHandler_Register_DuplicateEmail (0.04s)
+=== RUN   TestAuthHandler_Login_Success
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/v1/auth/login        --> homework/internal/handler.(*AuthHandler).Login-fm (1 handlers)
+--- PASS: TestAuthHandler_Login_Success (0.09s)
+=== RUN   TestAuthHandler_Login_InvalidCredentials
+=== RUN   TestAuthHandler_Login_InvalidCredentials/Unknown_email
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/v1/auth/login        --> homework/internal/handler.(*AuthHandler).Login-fm (1 handlers)
+=== RUN   TestAuthHandler_Login_InvalidCredentials/Wrong_password
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/v1/auth/login        --> homework/internal/handler.(*AuthHandler).Login-fm (1 handlers)
+--- PASS: TestAuthHandler_Login_InvalidCredentials (0.13s)
+    --- PASS: TestAuthHandler_Login_InvalidCredentials/Unknown_email (0.04s)
+    --- PASS: TestAuthHandler_Login_InvalidCredentials/Wrong_password (0.09s)
+=== RUN   TestAuthHandler_PasswordHashNotExposed
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/v1/auth/login        --> homework/internal/handler.(*AuthHandler).Login-fm (1 handlers)
+--- PASS: TestAuthHandler_PasswordHashNotExposed (0.09s)
+=== RUN   TestListBooks
+2026/11/13 19:17:06 Registering book handlers...
+--- PASS: TestListBooks (0.00s)
+PASS
+ok  	homework/internal/handler	(cached)
+=== RUN   TestRBAC_AdminCanAccess
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /admin/users              --> homework/internal/middleware.TestRBAC_AdminCanAccess.func1 (3 handlers)
+--- PASS: TestRBAC_AdminCanAccess (0.00s)
+=== RUN   TestRBAC_ReaderCannotAccessAdmin
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /admin/users              --> homework/internal/middleware.TestRBAC_ReaderCannotAccessAdmin.func1 (3 handlers)
+--- PASS: TestRBAC_ReaderCannotAccessAdmin (0.00s)
+=== RUN   TestRBAC_LibrarianCanAccessStaffEndpoint
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /staff/books              --> homework/internal/middleware.TestRBAC_LibrarianCanAccessStaffEndpoint.func1 (3 handlers)
+--- PASS: TestRBAC_LibrarianCanAccessStaffEndpoint (0.00s)
+=== RUN   TestRBAC_ReaderCannotAccessStaffEndpoint
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /staff/books              --> homework/internal/middleware.TestRBAC_ReaderCannotAccessStaffEndpoint.func1 (3 handlers)
+--- PASS: TestRBAC_ReaderCannotAccessStaffEndpoint (0.00s)
+=== RUN   TestRBAC_MultipleRolePermissions
+=== RUN   TestRBAC_MultipleRolePermissions/Admin_access
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /protected                --> homework/internal/middleware.TestRBAC_MultipleRolePermissions.func1.1 (3 handlers)
+=== RUN   TestRBAC_MultipleRolePermissions/Librarian_access
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /protected                --> homework/internal/middleware.TestRBAC_MultipleRolePermissions.func1.1 (3 handlers)
+=== RUN   TestRBAC_MultipleRolePermissions/Reader_denied
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /protected                --> homework/internal/middleware.TestRBAC_MultipleRolePermissions.func1.1 (3 handlers)
+--- PASS: TestRBAC_MultipleRolePermissions (0.00s)
+    --- PASS: TestRBAC_MultipleRolePermissions/Admin_access (0.00s)
+    --- PASS: TestRBAC_MultipleRolePermissions/Librarian_access (0.00s)
+    --- PASS: TestRBAC_MultipleRolePermissions/Reader_denied (0.00s)
+=== RUN   TestRBAC_MissingTokenReturns401
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /protected                --> homework/internal/middleware.TestRBAC_MissingTokenReturns401.func1 (3 handlers)
+--- PASS: TestRBAC_MissingTokenReturns401 (0.00s)
+=== RUN   TestRBAC_InvalidTokenReturns401
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /protected                --> homework/internal/middleware.TestRBAC_InvalidTokenReturns401.func1 (3 handlers)
+--- PASS: TestRBAC_InvalidTokenReturns401 (0.00s)
+=== RUN   TestRBAC_ExecutionHaltedOnForbidden
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /protected                --> homework/internal/middleware.TestRBAC_ExecutionHaltedOnForbidden.func1 (3 handlers)
+--- PASS: TestRBAC_ExecutionHaltedOnForbidden (0.00s)
+PASS
+ok  	homework/internal/middleware	(cached)
+=== RUN   TestBook
+--- PASS: TestBook (0.00s)
+=== RUN   TestCategory
+--- PASS: TestCategory (0.00s)
+=== RUN   TestAuthor
+--- PASS: TestAuthor (0.00s)
+PASS
+ok  	homework/internal/model	(cached)
+=== RUN   TestRepository
+--- PASS: TestRepository (0.00s)
+PASS
+ok  	homework/internal/repository	(cached)

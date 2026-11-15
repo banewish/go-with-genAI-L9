@@ -1,0 +1,79 @@
+# LibraTrack Security Implementation Prompts
+
+## Task 2.1: Authentication Module (bcrypt + JWT)
+
+### Prompt for Database Migrations and User Model
+
+"Generate Go code for a LibraTrack authentication system with the following requirements:
+
+1. Create database migration files:
+   - File: `000002_add_auth_fields.up.sql`
+   - Create a `users` table with columns:
+     - id (SERIAL PRIMARY KEY)
+     - email (VARCHAR(255) NOT NULL UNIQUE)
+     - password_hash (VARCHAR(255) NOT NULL)
+     - role (VARCHAR(50) NOT NULL DEFAULT 'reader')
+     - created_at (TIMESTAMP DEFAULT CURRENT_TIMESTAMP)
+     - updated_at (TIMESTAMP DEFAULT CURRENT_TIMESTAMP)
+   - Create index on email for lookups
+   - File: `000002_add_auth_fields.down.sql` for rollback
+
+2. Create User model in `internal/model/user.go`:
+   - Use GORM tags for database mapping
+   - Annotate PasswordHash with json:\"-\" to prevent exposure in JSON responses
+   - Create RegisterRequest and LoginRequest DTOs with validation tags
+   - Create LoginResponse with Token and User fields
+
+3. Implement auth handlers in `internal/handler/auth.go`:
+   - Register handler: Hash passwords using bcrypt.GenerateFromPassword with bcrypt.DefaultCost (10), default role to 'reader'
+   - Login handler: Verify password with bcrypt.CompareHashAndPassword, return identical 401 error for both invalid email and wrong password to prevent user enumeration
+   - Issue JWT tokens with HS256 signing using os.Getenv(\"JWT_SECRET\")
+   - JWT claims must include: user_id, role, exp (24 hours from now)
+
+Requirements:
+- Use golang.org/x/crypto/bcrypt for password hashing
+- Use github.com/golang-jwt/jwt/v5 for token generation
+- Return HTTP 401 'invalid credentials' for both unknown email and wrong password
+- Return HTTP 409 for duplicate email registration"
+
+### Prompt for RBAC Middleware
+
+"Generate Go middleware functions for LibraTrack role-based access control:
+
+1. Create AuthMiddleware in `internal/middleware/auth.go`:
+   - Extract bearer token from Authorization header
+   - Validate JWT signature and expiration using HS256
+   - Extract claims: user_id and role
+   - Store in Gin context via c.Set(\"user_id\", ...) and c.Set(\"role\", ...)
+   - Return HTTP 401 on missing/invalid token
+
+2. Create RequireRole function (variadic):
+   - Accept allowed roles as parameters: RequireRole(\"admin\", \"librarian\")
+   - Extract role from Gin context
+   - Return HTTP 401 if unauthenticated
+   - Return HTTP 403 if role not in allowed list
+   - Must call c.AbortWithStatusJSON() to halt execution
+
+3. Demonstrate route group setup in main.go:
+   - Create public routes: POST /api/v1/auth/register, POST /api/v1/auth/login, GET /api/v1/books
+   - Create protected routes: GET /api/v1/me/loans (requires AuthMiddleware)
+   - Create staff routes: POST /api/v1/books (requires AuthMiddleware + RequireRole(\"librarian\", \"admin\"))
+   - Create admin routes: GET /api/v1/users (requires AuthMiddleware + RequireRole(\"admin\"))
+
+Requirements:
+- Use github.com/golang-jwt/jwt/v5 for validation
+- Use Gin framework middleware pattern
+- Must validate JWT signature strictly"
+
+---
+
+## Implementation Results
+
+Both prompts were successfully executed to generate:
+- Migration files for user authentication schema
+- User model with password security best practices
+- Authentication handlers with bcrypt hashing and JWT issuance
+- RBAC middleware with role-based route protection
+- Logging middleware with password field redaction
+
+All code follows production security standards with proper error handling and no sensitive data exposure.
